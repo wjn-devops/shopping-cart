@@ -13,6 +13,7 @@ while True:
 
 for line in productlist:
 	print(line)
-with open('products.cvs','w') as f:
+with open('products.csv','w') as f:
+	f.write('商品'+','+'價格'+'\n')
 	for line in productlist:
 		f.write(line[0]+','+str(line[1])+'\n')
