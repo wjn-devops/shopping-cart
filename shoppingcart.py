@@ -1,4 +1,13 @@
 productlist=[]
+
+#讀取購買紀錄
+with open('products.csv','r',encoding='utf-8') as f:
+    print("購買紀錄如下"+'\n'+"---------")
+    for line in f:
+    	print(line)
+
+
+
 while True:
     name = input('輸入商品名稱')
     if name == 'q':
