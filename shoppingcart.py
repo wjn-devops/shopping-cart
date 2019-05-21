@@ -1,17 +1,19 @@
+import os
 productlist=[]
 
+
 #讀取購買紀錄
-with open('products.csv','r',encoding='utf-8') as f:
+if os.path.isfile('products.csv'):
+    with open('products.csv','r',encoding='utf-8') as f:
     #print("購買紀錄如下"+'\n'+"---------")
-    for line in f:
-    	if '商品,價格' in line:
-    		continue
-    	name,price = line.strip().split(',')
-    	productlist.append([name,price])
-    	print(name+':'+price)
-
-
-
+        for line in f:
+    	    if '商品,價格' in line:
+    		    continue
+    	    name,price = line.strip().split(',')
+    	    productlist.append([name,price])
+    	    print(name+':'+price)
+else :
+	print('無購買紀錄')
 while True:
     name = input('輸入商品名稱')
     if name == 'q':
