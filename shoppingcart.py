@@ -14,6 +14,7 @@ if os.path.isfile('products.csv'):
     	    print(name+':'+price)
 else :
 	print('無購買紀錄')
+#輸入購買項目
 while True:
     name = input('輸入商品名稱')
     if name == 'q':
@@ -25,9 +26,10 @@ while True:
     #productlist.append(p)
     productlist.append([name, price])
 #print(productlist)
-
+#列出所有購買紀錄
 for line in productlist:
 	print(line)
+#寫入檔案
 with open('products.csv','w',encoding='utf-8') as f:
 	f.write('商品'+','+'價格'+'\n')
 	for line in productlist:
