@@ -5,17 +5,15 @@ import os
 #讀取購買紀錄
 def read_file(filename):
 	productlist=[]
-	if os.path.isfile(filename):
-	    with open(filename,'r',encoding='utf-8') as f:
+	with open(filename,'r',encoding='utf-8') as f:
 	    #print("購買紀錄如下"+'\n'+"---------")
-	        for line in f:
-	    	    if '商品,價格' in line:
-	    		    continue
-	    	    name,price = line.strip().split(',')
-	    	    productlist.append([name,price])
-	    	    print(name+':'+price)
-	else :
-		print('無購買紀錄')
+	    for line in f:
+	    	if '商品,價格' in line:
+	    		continue
+	    	name,price = line.strip().split(',')
+	    	productlist.append([name,price])
+	    	print(name+':'+price)
+	
 	return productlist
 #輸入購買項目
 def user_input(products):
@@ -42,7 +40,14 @@ def write_file(filename,products):
 		for line in products:
 			f.write(line[0]+','+str(line[1])+'\n')
 	return products
-products=read_file('products.csv')
-products=user_input(products)
-print_list(products)
-write_file('products.csv',products)
+def main ():
+	filename='products.csv'
+	if os.path.isfile(filename):
+		products=read_file(filename)
+		products=user_input(products)
+		print_list(products)
+		write_file(filename,products)
+	else:
+		print('無購買紀錄')
+
+main()
